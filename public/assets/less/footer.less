@@ -1,0 +1,109 @@
+.footer{
+    border-top: solid 1px #bdc3c7; 
+    width: 100%;
+    height: 250px;
+    background-color: @background-footer-color;
+    position: relative;
+}
+.footer1,.footer2,.footer3{
+    float: left;
+    padding: 20px 0px 0px 0px;
+}
+.footer1{
+    .gioithieu{
+        
+        img{
+            height: 50px;
+        }
+        p{
+            color:@text-footer-color;
+            font-size: 14px;
+            padding: 5px 10px 0px 10px;
+        }
+        h2{
+            color:@text-footer-color;
+            font-size: 14px;
+            padding: 5px 10px 0px 10px;
+        }
+        a{
+            color: @text-footer-color;
+            transition: all 0.4s;
+            text-decoration: none;
+        }
+        a:hover{
+            color: @text-footer-color-hover;
+        }
+    }
+    .blogbanbe{
+        color: @text-footer-color;
+        h3{
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        a{
+            font-size: 14px;
+            text-decoration: none;
+            color: @text-footer-color;
+            padding: 5px 0px 0px 0px;
+        }
+        a:first-of-type{
+            padding-left: 10px;
+        }
+        a:hover{
+            color: @text-footer-color-hover;
+        }
+    }
+}
+.footer3{
+    h3{
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+        color:@text-footer-color;
+    }
+    p{
+        color:@text-footer-color;
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    .formdangkynhantin{
+        input[type="email"]{
+            padding: 0px 10px;
+            height: 30px;
+            border: solid 1px @text-footer-color;
+            margin-left: 10px;
+            width: 50%;
+        }
+        input[type="email"]::placeholder{
+            color: #d35400;
+        }
+        input[type="email"]:focus{
+            outline: none;
+        }
+        input[type="submit"]{
+            height: 30px;
+            padding: 0px 10px;
+            color: #d35400;
+            width: 20%;
+        }
+    }
+    .doinguadmin{
+        padding-top: 10px;
+    }
+}
+.copyright{
+    background-color: @background-footer-bar-color;
+    line-height: 30px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom:0;
+    .fa{
+        color: @text-footer-bar-color;
+    }
+    span{
+        font-weight: bold;
+        color: @text-footer-bar-color;
+    }
+}
