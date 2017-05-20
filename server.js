@@ -1,3 +1,8 @@
+/**
+ * Created by Dac Hai on 10/05/2017.
+ */
+'use strict';
+
 const express = require('express');
 const session = require('express-session');
 const app = express();
@@ -16,9 +21,10 @@ app.use(session({
 	saveUninitialized: true,
 	cookie: { secure: true }
 }));
-// Mongosee
-mongoose.connect('mongodb://localhost/ThiThuOnline'); 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// Mongosee 
+mongoose.connect("mongodb://localhost/ThiThuOnline");
 // Socket IO
 io.on('connection', function (socket) {
 
@@ -31,10 +37,13 @@ io.on('connection', function (socket) {
 	});
 });
 // Routes
+let API = require('./app/routes/api');
+app.use('/api',API);
 app.get('/',function(req,res){
 	res.render('index');
 });
-var $va = require('./libs/validate.js');
+
+let $va = require('./libs/validate.js');
 // Server start
 server.listen(8000,function() {
 	console.log(" Server start...");

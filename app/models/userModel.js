@@ -1,9 +1,11 @@
 /**
  * Created by Dac Hai on 14/05/2017.
  */
-var mongosse = require('mongoose');
+ 'use strict';
+let mongosse = require('mongoose');
+let md5 = require('md5');
 // Users Schema
-var usersSchema = mongosse.Schema({
+let userSchema = mongosse.Schema({
 	ten:{
 		type: String,
 		required: true
@@ -34,7 +36,7 @@ var usersSchema = mongosse.Schema({
 			required: false
 		},
 		ngaysinh:{
-			type: Date,
+			type: String,
 			required: false
 		},
 		doituong:{
@@ -55,19 +57,19 @@ var usersSchema = mongosse.Schema({
 		},
 		diemsotrungbinh:{
 			toan:{
-				type: String,
+				type: Number,
 				required: false
 			},
 			ly:{
-				type: String,
+				type: Number,
 				required: false
 			},
 			hoa:{
-				type: String,
+				type: Number,
 				required: false
 			},
 			sinh:{
-				type: String,
+				type: Number,
 				required: false
 			},
 		},
@@ -81,16 +83,18 @@ var usersSchema = mongosse.Schema({
 		default: Date.now
 	}
 });
-var Users = module.exports = mongosse.model('Users', usersSchema);
+var User = module.exports = mongosse.model('User', userSchema);
 //
-// // Get Chuyên mục
-// module.exports.GetChuyenmuc = function (callback,limit) {
-// 	Chuyenmuc.find(callback).limit(limit);
-// }
-// // Post Chuyên mục
-// module.exports.AddChuyenmuc = function (data, callback) {
-// 	Chuyenmuc.create(data, callback);
-// }
+// Get User
+module.exports.GetUser = function (callback,limit) {
+	User.find(callback).limit(limit);
+}
+// Post User
+module.exports.AddUser = function (data, callback) {
+	data.matkhau = md5(data.matkhau + 'ankid');
+	console.log(data.matkhau);
+	//User.create(data, callback);
+}
 // // Delete chuyên mục
 // module.exports.DeleteChuyenmuc = function (id,callback) {
 // 	var query = {_id:id};
