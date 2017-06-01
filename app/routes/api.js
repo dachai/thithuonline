@@ -13,7 +13,20 @@ router.get('/', function (req, res) {
 //User
 let userController = require('../controller/userController')
 let UserController = new userController();
-router.get('/user/:token',(req, res) => UserController.getUser(req, res));
-router.post('/user/:token',(req, res) => UserController.postUser(req, res));
+router.post('/user/:token',(req, res) => UserController.addUser(req, res));
+router.post('/login/:token', (req,res)=> UserController.login(req,res));
+router.get('/checklogin',function(req,res){
+	if (req.session.user) {
+		res.send(req.session.user);
+	}else{
+		res.send('NO_LOG_IN');
+	}
+});
+router.get('/logout/:token',function(req,res){
+	if (req.session.user) {
+		delete req.session.user;
+		res.send('SUCCESS_LOG_OUT');
+	}
+});
 
 module.exports = router

@@ -25,7 +25,8 @@
 			}
 	},
   	"quyentruycap" : "admin", // user //bientap
-  	"creat_date":"2017-05-07T08:37:07.849Z"
+  	"trangthai" : "online" // socket.id
+  	"ngaytao":"2017-05-07T08:37:07.849Z"
 }
 // ChuyenMuc
 {
@@ -35,7 +36,7 @@
 	"slug": "toan",
 	"keyword": "toan",
 	"cha" : "590edcb364ca902094dfb503", // Lấy theo ID ChuyenMuc
-	"creat_date":"2017-05-07T08:37:07.849Z"
+	"ngaytao":"2017-05-07T08:37:07.849Z"
 }
 // DeThi
 {

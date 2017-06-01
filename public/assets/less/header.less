@@ -185,18 +185,90 @@
 }
 .login{
     float: left;
-    a{
-        line-height: 50px;
-        color: #16a085;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.4s;
-    }
-    a:hover{
-        text-decoration: underline;
-        color: #16a085;
+    height: 50px;
+    div{
+        float: right;
+        height: 50px; 
+        p{
+            float: right;
+            line-height: 50px;
+            height: 50px;
+            width: 50px;
+            font-weight: bold;
+            position: relative;
+            z-index: 100;
+            img{
+                width: 40px;
+                height: 40px;
+                margin: 5px 0px;
+                border-radius: 50%;
+                position: absolute;
+                z-index: 110;
+                top: 0;
+                right: 0;
+            }
+            i{
+                bottom: 5px;
+                right: 0;
+                position: absolute;
+                z-index: 120;
+                color: #16a085;
+                background-color: #fff;
+                border-radius: 50%;
+                font-size: 12px;
+                padding: 1px;
+            }
+        }
+        p:hover{
+            .submenu{
+                display: block;
+            }
+            i{
+                color: #f1c40f;
+            }
+        }
+        .submenu{
+            position: absolute;
+            width: 140px;
+            top: 48px;
+            right: 0px;
+            z-index: 100px;
+            display: none;
+            a{
+                text-align: left;
+                display: block;
+                line-height: 30px;
+                padding: 0px 10px 0 20px;
+                background-color: #fff;
+                color: #16a085;
+                font-size: 14px;
+                text-decoration: none;
+                i{
+                    font-size: 14px;
+                    position: static;
+                    color: #16a085;
+                }
+            }
+            a:hover{
+                text-decoration: none;
+                i{
+                    color: #f1c40f;
+                }
+            }
+        }
+        a{
+            line-height: 50px;
+            color: #16a085;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s;
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #16a085;
+        }
     }
 }
 .top-bar{

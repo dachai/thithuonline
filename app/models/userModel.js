@@ -3,26 +3,27 @@
  */
  'use strict';
 let mongosse = require('mongoose');
-let md5 = require('md5');
+let FUNCTION = require('../libs/function');
+FUNCTION = new FUNCTION();
 // Users Schema
 let userSchema = mongosse.Schema({
-	ten:{
+	fistname:{
 		type: String,
 		required: true
 	},
-	ho:{
+	lastname:{
 		type: String,
 		required: true
 	},
-	taikhoan:{
+	username:{
 		type: String,
 		required: true
 	},
-	matkhau:{
+	password:{
 		type: String,
 		required: true
 	},
-	matkhaucu:{
+	old_pasword:{
 		type: String,
 		required: false
 	},
@@ -30,71 +31,88 @@ let userSchema = mongosse.Schema({
 		type: String,
 		required: true
 	},
-	thongtinthem:{
-		anhdaidien:{
+	more:{
+		avatar:{
 			type: String,
 			required: false
 		},
-		ngaysinh:{
+		birthday:{
 			type: String,
 			required: false
 		},
-		doituong:{
+		job:{
 			type: String,
 			required: true
 		},
-		sobaidalam:{
+		task_number:{
 			type: Number,
 			required: false
 		},
-		solanphamquy:{
+		error_number:{
 			type: Number,
 			required: false
 		},
-		sobaidadang:{
+		post_number:{
 			type: Number,
 			required: false
 		},
-		diemsotrungbinh:{
-			toan:{
+		score:{
+			math:{
 				type: Number,
 				required: false
 			},
-			ly:{
+			physical:{
 				type: Number,
 				required: false
 			},
-			hoa:{
+			chemistry:{
 				type: Number,
 				required: false
 			},
-			sinh:{
+			disciple:{
 				type: Number,
 				required: false
 			},
 		},
 	},
-	quyentruycap:{
+	level:{
 		type: String,
 		required: true
+	},
+	status:{
+		type:String,
+		required:true
 	},
 	create_date:{
 		type: Date,
 		default: Date.now
 	}
 });
-var User = module.exports = mongosse.model('User', userSchema);
-//
-// Get User
-module.exports.GetUser = function (callback,limit) {
-	User.find(callback).limit(limit);
-}
-// Post User
-module.exports.AddUser = function (data, callback) {
-	data.matkhau = md5(data.matkhau + 'ankid');
-	console.log(data.matkhau);
-	//User.create(data, callback);
-}
+var User = module.exports = mongosse.model('user', userSchema);
+module.exports = class userModel{
+	getUser(callback,limit) {
+		User.find(callback).limit(limit);
+	}
+	addUser(data, callback) {
+		data.password = FUNCTION.encode_password(data.password);
+		User.create(data, callback);
+	}
+	login(query,callback){
+		User.findOne(query,callback);
+	}
+	addConnect(id,value){
+		User.findOne({_id: id}, function(err, user){
+		   user.status = value;
+		   user.save();
+		});
+	}
+	removeConnect(value){
+		User.findOne({status: value}, function(err, user){
+		   user.status = 'off';
+		   user.save();
+		});
+	}
+} 
 // // Delete chuyên mục
 // module.exports.DeleteChuyenmuc = function (id,callback) {
 // 	var query = {_id:id};

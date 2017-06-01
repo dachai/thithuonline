@@ -32,21 +32,7 @@ $(document).ready(function () {
 			$('.main-bailam').removeClass('popup-bailam');
 			$('#zoom').html('<i class="fa fa-expand" aria-hidden="true"></i>');
 		}
-	});
-	// Bắt sự kiện mở popup đăng nhập
-	$('#mo-dangnhap').click(function () {
-		$('.dangnhap').slideDown(300);
-	});
-	// Bắt sự kiện đóng popup đăng nhập
-	$('#dong-dangnhap').click(function () {
-		$('.dangnhap').slideUp(300);
-	});
-	// Bắt sự kiện click bên ngoài khung đăng nhập
-	$('body').click(function(e) {
-		if (!$(e.target).closest('.khungdangnhap').length && !$(e.target).closest('#mo-dangnhap').length){
-			$(".dangnhap").fadeOut(300);
-		}
-	});
+	}); 
 	// Bắt sự kiện nộp bài
 	$('#nopbai').click(function () {
 		var d = 0,dapan = [];
@@ -73,47 +59,18 @@ $(document).ready(function () {
 		}
 	});
 
-	// Bắt sự kiện click đăng nhập
-	$('#dangnhap_btndangnhap').click(function () {
-		var data = {
-			"taikhoan" : $('#dangnhap-taikhoan').val(),
-			"matkhau" : $('#dangnhap-matkhau').val()
-		}
-		// Gửi dữ liệu đăng nhập lên server
-		socket.emit('dangnhap',data);
-	});
+
 	// Nhận dữ liệu kiểm tra đăng nhập
 	socket.on('ketquadangnhap',function (data) {
-		if (data.status == 1 ){
-			alert('Thành công');
+		if (data.status == 0) {
+			alert(data.messinger);
 		}
 	});
-	// Bắt sự kiên blur Đăng nhập input tài khoản
-	$('#dangnhap-taikhoan').blur(function () {
-		var $input = $(this).val();
-		var $thongbao = $('#dangnhap-thongbao-taikhoan');
-		if($input == ""){
-			$thongbao.html('<div class="thongbaoloi">Bạn chưa nhập Tài khoản hoặc Email.</div>');
-		}else if($input.length < 6 ){
-			$thongbao.html('<div class="thongbaoloi">Tài khoản hoặc email phải nhiều hơn 6 ký tự.</div>');
-		}else if($input.length > 200 ){
-			$thongbao.html('<div class="thongbaoloi">Tài khoản hoặc email phải ít hơn 200 ký tự.</div>');
-		}else{
-			$thongbao.html('');
-		}
+
+	// Bắt sự kiện click đăng xuất
+	$('#mo-dangxuat').click(function () {
+		// Gửi dữ liệu đăng nhập lên server
+		socket.emit('dangxuat','dangxuat');
 	});
-	// Bắt sự kiên blur Đăng nhập input mật khẩu
-	$('#dangnhap-matkhau').blur(function () {
-		var $input = $(this).val();
-		var $thongbao = $('#dangnhap-thongbao-matkhau');
-		if($input == ""){
-			$thongbao.html('<div class="thongbaoloi">Bạn chưa nhập mật khẩu.</div>');
-		}else if($input.length < 6 ){
-			$thongbao.html('<div class="thongbaoloi">Mật khẩu phải nhiều hơn 6 ký tự.</div>');
-		}else if($input.length > 200 ){
-			$thongbao.html('<div class="thongbaoloi">Tài mật khẩu phải ít hơn 200 ký tự.</div>');
-		}else{
-			$thongbao.html('');
-		}
-	});
+	
 });

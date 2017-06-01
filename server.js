@@ -4,47 +4,45 @@
 'use strict';
 
 const express = require('express');
-const session = require('express-session');
+const session = require("express-session")({
+				secret: "my-secret",
+				resave: true,
+				saveUninitialized: true
+				});
+const sharedsession = require("express-socket.io-session");
 const app = express();
 const server = require('http').Server(app);
+const path = require('path');
 const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const port = process.env.PORT || 8000;
 
 // Cấu hình express Views
 app.use( express.static( __dirname + '/public'));
 app.set('view engine','ejs');
 app.set('views','./views');
-app.use(session({
-	secret: 'xinchaof',
-	resave: false,
-	saveUninitialized: true,
-	cookie: { secure: true }
-}));
+app.use(session);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // Mongosee 
 mongoose.connect("mongodb://localhost/ThiThuOnline");
-// Socket IO
-io.on('connection', function (socket) {
 
-	// Nhận lệch check đăng nhập.
-	socket.on('dangnhap',function (data) {
-		console.log(data.taikhoan);
-		console.log(data.matkhau);
-		// Trả kết quả đăng nhập.
-		socket.emit('ketquadangnhap',{status:1,messinger:"Thành công"});
-	});
-});
+// Socket IO
+io.use(sharedsession(session));
+io.on('connection', function (socket) {
+	require('./app/routes/socket')(socket);
+}); 
+
 // Routes
 let API = require('./app/routes/api');
 app.use('/api',API);
-app.get('/',function(req,res){
+app.get('*',function(req,res){
 	res.render('index');
 });
 
-let $va = require('./libs/validate.js');
 // Server start
-server.listen(8000,function() {
+server.listen(port,function() {
 	console.log(" Server start...");
 });
