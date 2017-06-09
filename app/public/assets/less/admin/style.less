@@ -1,0 +1,38 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+@import 'color.less';
+@import '../font.less';
+body{
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+	font-family: OpenSans,Roboto, Arial, Helvetica;
+	font-weight: 400;
+}
+::selection{
+	background-color: #2ecc71;
+	color: #ffffff;
+}
+.clear{
+	width: 100%;
+	clear: both;
+}
+.fixed {
+	position: fixed !important;
+	top:0;
+}
+@import '/../chiacot.less';
+@import 'form.less';
+@import 'header.less';
+.content{
+	width:100%;
+	height: 100%;
+	position: relative;
+	top: @height_header;
+	left: 0;
+}
+@import 'menu.less';
+@import 'main.less';
+@import 'messge.less';

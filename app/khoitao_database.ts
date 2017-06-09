@@ -28,15 +28,14 @@
   	"trangthai" : "online" // socket.id
   	"ngaytao":"2017-05-07T08:37:07.849Z"
 }
-// ChuyenMuc
+// Category
 {
 	"_id" : "590edcb364ca902094dfb503",
-	"tenchuyenmuc" : "Toán",
-	"mota" : "Đây là mô tả của chuyên mục",
+	"name" : "Toán",
+	"desc" : "Đây là mô tả của chuyên mục",
 	"slug": "toan",
-	"keyword": "toan",
-	"cha" : "590edcb364ca902094dfb503", // Lấy theo ID ChuyenMuc
-	"ngaytao":"2017-05-07T08:37:07.849Z"
+	"drug" : "590edcb364ca902094dfb503", // Lấy theo ID ChuyenMuc
+	"create_date":"2017-05-07T08:37:07.849Z"
 }
 // DeThi
 {

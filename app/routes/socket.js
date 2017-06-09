@@ -5,7 +5,7 @@
 'use strict';
 
 //User
-let userController = require('../controller/userController');
+let userController = require('../controllers/userController');
 let UserController = new userController();
 let userModel = require('../models/userModel.js');
 userModel = new userModel();
