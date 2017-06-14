@@ -11,7 +11,7 @@ const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const mongodb = require('mongodb');
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
 
 // Cấu hình express Views
 app.use( express.static( __dirname + '/public'));
@@ -39,6 +39,8 @@ let Router = require('./vendor/Bootstraps/router/router.js');
 app.use('/',Router);
 
 // Server start
-server.listen(port,function(){
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+server.listen(server_port,server_ip_address,function(){
 	console.log("Server start ...")
 });
