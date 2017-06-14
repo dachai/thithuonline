@@ -131,7 +131,6 @@ module.exports = class registerController{
 	}
 	RegisterFacebook(req,res){
 		let value = req.body;
-		console.log(value);
 		if(value){
 			let error = [];
 			if(Validate.isRequired(value.lastname) == false){
