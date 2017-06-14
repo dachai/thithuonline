@@ -5,7 +5,6 @@
 
 const express = require('express');
 const session = require("express-session")({secret: "my-secret", resave: true, saveUninitialized: true});
-const sharedsession = require("express-socket.io-session");
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -22,8 +21,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Mongosee
-mongoose.connect("mongodb://localhost/ThiThuOnline");
-
+let urlDB = "mongodb://caodachai:Hai002010!@#@thithuonline-shard-00-00-5ovjg.mongodb.net:27017,thithuonline-shard-00-01-5ovjg.mongodb.net:27017,thithuonline-shard-00-02-5ovjg.mongodb.net:27017/thithuonline?ssl=true&replicaSet=thithuonline-shard-0&authSource=admin"
+// mongoose.connect("mongodb://localhost/ThiThuOnline");
+mongoose.connect(urlDB);
 let Router = require('./vendor/Bootstraps/router/router.js');
 app.use('/',Router);
 
