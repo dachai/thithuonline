@@ -1,0 +1,81 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+@import 'font/font.less';
+@import 'color/color.less';
+body{
+	background-color: @background-color;
+	font-family: OpenSans, Roboto, Arial,Helvetica;
+	color: @text-color;
+}
+::selection{
+	background: @main-color;
+	color: #ffffff;
+}
+.clear{ 
+	width: 100%;
+	clear: both;
+} 
+.fixed {
+	position: fixed !important;
+	top:0;
+}
+.loading{
+	position: fixed;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255,0.5);
+	img{
+		width: 30px;
+		height: 30px;
+		position: fixed;
+		left: calc(~"100% - 50% - 15px");
+		top: calc(~"100% - 50% - 15px");
+	}
+}
+.messageError{
+	p{
+		background-color: #e74c3c;
+		line-height: 40px;
+		display: block;
+		padding: 0px 10px;
+		margin: 3px 0px;
+		color: #fff;
+		text-align: center;
+		font-weight: normal;
+		border-radius: 5px;
+	}
+}
+.messageSuccess{
+	p{
+		background-color: #2ecc71;
+		line-height: 40px;
+		display: block;
+		padding: 0px 10px;
+		margin: 3px 0px;
+		color: #fff;
+		text-align: center;
+		font-weight: normal;
+		border-radius: 5px;
+	}
+}
+/* Gird */
+@import 'gird/chiacot.less';
+
+/* Footer */
+@import 'footer/footer.less';
+
+/* Header */
+@import 'header/login.less';
+@import 'header/postnew.less';
+@import 'header/header.less';
+
+/* Main Content */
+@import 'main/content/register.less';
+@import 'main/content/bailam.less';
+@import 'main/content/index.less';
+
+/* Main Sidebar */
+@import 'main/sidebar/sidebar.less';

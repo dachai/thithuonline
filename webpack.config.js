@@ -1,34 +1,38 @@
 /***********************************************************************/
 /*************************      CLIENT     *****************************/
 /***********************************************************************/
-
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
-	entry  : './app/client/react/app.js',
+	entry  : './vendor/ThuVienOnline/react/app.js',
 	output : {
 		path    : __dirname,
-		filename: './app/public/core/client.js'
+		filename: './public/core/client.js'
 	},
+	devtool: "source-map",
 	resolve: {
 		root : __dirname,
 		alias: {
-			Body         : 'app/client/react/component/body.js',
-			Header       : 'app/client/react/component/body/header.js',
-			Logo         : 'app/client/react/component/body/header/logo.js',
-			Menu         : 'app/client/react/component/body/header/menu.js',
-			Seacrh       : 'app/client/react/component/body/header/search.js',
-			Login        : 'app/client/react/component/body/header/login.js',
-			PopupDangNhap: 'app/client/react/component/body/header/PopupDangNhap.js',
-			Footer       : 'app/client/react/component/body/footer.js',
-			Footer1      : 'app/client/react/component/body/footer/footer1.js',
-			Footer2      : 'app/client/react/component/body/footer/footer2.js',
-			Footer3      : 'app/client/react/component/body/footer/footer3.js',
-			FooterBar    : 'app/client/react/component/body/footer/footerBar.js',
-			TinMoi       : 'app/client/react/component/body/tinmoi.js',
-			Main         : 'app/client/react/component/body/main.js',
-			TrangChu     : 'app/client/react/component/body/main/trangchu.js',
-			BaiLam       : 'app/client/react/component/body/main/bailam.js',
-			UpLoad       : 'app/client/react/component/body/main/upload.js',
-			NotFound     : 'app/client/react/component/body/main/notfound.js',
+			key : 'vendor/ThuVienOnline/libs/key.js',
+			validate: 'vendor/ThuVienOnline/libs/validate.js',
+			Body         : 'vendor/ThuVienOnline/React/Component/body.js',
+			Header       : 'vendor/ThuVienOnline/React/Component/body/header.js',
+			Logo         : 'vendor/ThuVienOnline/React/Component/body/Header/logo.js',
+			Menu         : 'vendor/ThuVienOnline/React/Component/body/Header/menu.js',
+			Seacrh       : 'vendor/ThuVienOnline/React/Component/body/Header/search.js',
+			Login        : 'vendor/ThuVienOnline/React/Component/body/Header/login.js',
+			PopupLogin	 : 'vendor/ThuVienOnline/React/Component/body/Header/popupLogin.js',
+			Register	 : 'vendor/ThuVienOnline/React/Component/body/Main/Register/Register.js',
+			Footer       : 'vendor/ThuVienOnline/React/Component/body/footer.js',
+			Footer1      : 'vendor/ThuVienOnline/React/Component/body/Footer/footer1.js',
+			Footer2      : 'vendor/ThuVienOnline/React/Component/body/Footer/footer2.js',
+			Footer3      : 'vendor/ThuVienOnline/React/Component/body/Footer/footer3.js',
+			FooterBar    : 'vendor/ThuVienOnline/React/Component/body/Footer/footerBar.js',
+			New       	 : 'vendor/ThuVienOnline/React/Component/body/Header/new.js',
+			Main         : 'vendor/ThuVienOnline/React/Component/body/main.js',
+			Home     	 : 'vendor/ThuVienOnline/React/Component/body/Main/Home/home.js',
+			BaiLam       : 'vendor/ThuVienOnline/React/Component/body/Main/bailam.js',
+			UpLoad       : 'vendor/ThuVienOnline/React/Component/body/Main/Upload/upload.js',
+			NotFound     : 'vendor/ThuVienOnline/React/Component/body/Main/Notfound/notfound.js',
 		}
 	},
 	module : {
@@ -42,41 +46,8 @@ module.exports = {
 				exclude: /node_modules/
 			}
 		]
-	}
+	},
+	// plugins: [
+	//     new UglifyJSPlugin()
+	// ]
 };
-
-/***********************************************************************/
-/*************************       ADMIN     *****************************/
-/***********************************************************************/
-//
-// module.exports = {
-// 	entry: './app/admin/react/app.js',
-// 	output: {
-// 		path: __dirname,
-// 		filename: './app/public/core/admin.js'
-// 	},
-// 	resolve: {
-// 		root: __dirname,
-// 		alias: {
-// 			Body: 'app/admin/react/component/body.js',
-// 			Header:'app/admin/react/component/body/header.js',
-// 			Menu:'app/admin/react/component/body/menu.js',
-// 			Main: 'app/admin/react/component/body/main.js',
-// 			TrangChu: 'app/admin/react/component/body/main/trangchu.js',
-// 			ChuyenMuc: 'app/admin/react/component/body/main/chuyenmuc/chuyenmuc.js',
-// 			SuaChuyenMuc: 'app/admin/react/component/body/main/chuyenmuc/suachuyenmuc.js'
-// 		}
-// 	},
-// 	module: {
-// 		loaders: [
-// 			{
-// 				loader: 'babel-loader',
-// 				query: {
-// 					presets: ['es2015', 'react', 'stage-0']
-// 				},
-// 				test: /\.jsx?$/,
-// 				exclude: /node_modules/
-// 			}
-// 		]
-// 	}
-// };
