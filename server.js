@@ -28,6 +28,4 @@ let Router = require('./vendor/Bootstraps/router/router.js');
 app.use('/',Router);
 
 // Server start
-server.listen(port,function() {
-	console.log(" Server start...");
-});
+server.listen(port);
