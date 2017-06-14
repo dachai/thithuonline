@@ -12,7 +12,7 @@ class Register extends React.Component {
 		super(props);
 		this.state = {
 			errorLastName: '',
-			errorFistName: '',
+			errorFirstName: '',
 			errorEmail : '',
 			errorUserName:'',
 			errorPassword:'',
@@ -32,9 +32,9 @@ class Register extends React.Component {
 			error.push(<p key="lastname">Bạn chưa nhập Họ</p>)
 		}
 
-		let fistname = this.refs.fistname.value;
-		if(Validate.isRequired(fistname) == false){
-			error.push(<p key="fistname">Bạn chưa nhập Tên</p>)
+		let firstname = this.refs.firstname.value;
+		if(Validate.isRequired(firstname) == false){
+			error.push(<p key="firstname">Bạn chưa nhập Tên</p>)
 		}
 
 		let email = this.refs.email.value;
@@ -72,7 +72,7 @@ class Register extends React.Component {
 		}
 		if(error.length == 0){
 			let data = {
-				'fistname' : this.refs.fistname.value,
+				'firstname' : this.refs.firstname.value,
 				'lastname' : this.refs.lastname.value,
 				'email' : this.refs.email.value,
 				'username' : this.refs.username.value,
@@ -122,19 +122,19 @@ class Register extends React.Component {
 			})
 		}
 	}
-	onKeyUpFistName(){
+	onKeyUpfirstname(){
 		let $this = this;
-		let value = this.refs.fistname.value;
+		let value = this.refs.firstname.value;
 		if(Validate.isRequired(value) == false){
 			$this.setState((prevState, props) => {
 			  	return {
-			  		errorFistName: 'Bạn chưa nhập Tên'
+			  		errorFirstName: 'Bạn chưa nhập Tên'
 				};
 			})
 		}else{
 			$this.setState((prevState, props) => {
 			  	return {
-			  		errorFistName: ''
+			  		errorFirstName: ''
 				};
 			})
 		}
@@ -312,20 +312,20 @@ class Register extends React.Component {
 											<label>
 												Tên <span>*</span>
 												{
-													this.state.errorFistName != ''
-													?<small>{this.state.errorFistName}</small> 
+													this.state.errorFirstName != ''
+													?<small>{this.state.errorFirstName}</small> 
 													: ''
 												}
 											</label>
 											<input
 												className={
-													this.state.errorFistName != ''
+													this.state.errorFirstName != ''
 													? 'error'
 													: ''
 												}
 												type="text"
-												ref="fistname"
-												onKeyUp={this.onKeyUpFistName.bind(this)}
+												ref="firstname"
+												onKeyUp={this.onKeyUpfirstname.bind(this)}
 											/>
 										</div>
 									</div>

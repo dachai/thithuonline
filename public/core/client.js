@@ -28661,7 +28661,7 @@
 						_react2.default.createElement(
 							'p',
 							null,
-							CheckLogin.more && CheckLogin.more.avatar ? _react2.default.createElement('img', { src: CheckLogin.more.avatar, alt: CheckLogin.fistname }) : _react2.default.createElement('img', { src: 'https://us.123rf.com/450wm/imagevectors/imagevectors1602/imagevectors160200185/52757072-white-user-profile-icon-with-long-shadow-on-green-circle.jpg', alt: CheckLogin.fistname }),
+							CheckLogin.more && CheckLogin.more.avatar ? _react2.default.createElement('img', { src: CheckLogin.more.avatar, alt: CheckLogin.firstname }) : _react2.default.createElement('img', { src: 'https://us.123rf.com/450wm/imagevectors/imagevectors1602/imagevectors160200185/52757072-white-user-profile-icon-with-long-shadow-on-green-circle.jpg', alt: CheckLogin.firstname }),
 							_react2.default.createElement('i', { className: 'fa fa-cog', 'aria-hidden': 'true' }),
 							_react2.default.createElement(
 								'small',
@@ -37138,7 +37138,15 @@
 	
 				var $this = this;
 				dispatch({ type: 'ON_LOADING' });
-				window.fbAsyncInit = function () {
+				(function (d, s, id) {
+					var js,
+					    fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s);js.id = id;
+					js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=985944054831668";
+					fjs.parentNode.insertBefore(js, fjs);
+				})(document, 'script', 'facebook-jssdk');
+				$.getScript('//connect.facebook.net/vi_VN/sdk.js', function () {
 					FB.init({
 						appId: '985944054831668',
 						autoLogAppEvents: true,
@@ -37154,17 +37162,7 @@
 							});
 						}
 					});
-				};
-				(function (d, s, id) {
-					var js,
-					    fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) {
-						return;
-					}
-					js = d.createElement(s);js.id = id;
-					js.src = "//connect.facebook.net/en_US/sdk.js";
-					fjs.parentNode.insertBefore(js, fjs);
-				})(document, 'script', 'facebook-jssdk');
+				});
 				function testAPI() {
 					var data = {
 						fields: 'first_name, last_name, email, birthday, cover, picture'
@@ -37186,7 +37184,7 @@
 										var value = void 0;
 										if (res.email) {
 											value = {
-												'fistname': res.first_name,
+												'firstname': res.first_name,
 												'lastname': res.last_name,
 												'username': res.id,
 												'email': res.email,
@@ -37202,7 +37200,7 @@
 											};
 										} else {
 											value = {
-												'fistname': res.first_name,
+												'firstname': res.first_name,
 												'lastname': res.last_name,
 												'username': res.id,
 												'public': 'private',
@@ -39344,7 +39342,7 @@
 	
 			_this.state = {
 				errorLastName: '',
-				errorFistName: '',
+				errorFirstName: '',
 				errorEmail: '',
 				errorUserName: '',
 				errorPassword: '',
@@ -39373,11 +39371,11 @@
 					));
 				}
 	
-				var fistname = this.refs.fistname.value;
-				if (Validate.isRequired(fistname) == false) {
+				var firstname = this.refs.firstname.value;
+				if (Validate.isRequired(firstname) == false) {
 					error.push(_react2.default.createElement(
 						"p",
-						{ key: "fistname" },
+						{ key: "firstname" },
 						"B\u1EA1n ch\u01B0a nh\u1EADp T\xEAn"
 					));
 				}
@@ -39461,7 +39459,7 @@
 				}
 				if (error.length == 0) {
 					var data = {
-						'fistname': this.refs.fistname.value,
+						'firstname': this.refs.firstname.value,
 						'lastname': this.refs.lastname.value,
 						'email': this.refs.email.value,
 						'username': this.refs.username.value,
@@ -39512,20 +39510,20 @@
 				}
 			}
 		}, {
-			key: "onKeyUpFistName",
-			value: function onKeyUpFistName() {
+			key: "onKeyUpfirstname",
+			value: function onKeyUpfirstname() {
 				var $this = this;
-				var value = this.refs.fistname.value;
+				var value = this.refs.firstname.value;
 				if (Validate.isRequired(value) == false) {
 					$this.setState(function (prevState, props) {
 						return {
-							errorFistName: 'Bạn chưa nhập Tên'
+							errorFirstName: 'Bạn chưa nhập Tên'
 						};
 					});
 				} else {
 					$this.setState(function (prevState, props) {
 						return {
-							errorFistName: ''
+							errorFirstName: ''
 						};
 					});
 				}
@@ -39748,17 +39746,17 @@
 														null,
 														"*"
 													),
-													this.state.errorFistName != '' ? _react2.default.createElement(
+													this.state.errorFirstName != '' ? _react2.default.createElement(
 														"small",
 														null,
-														this.state.errorFistName
+														this.state.errorFirstName
 													) : ''
 												),
 												_react2.default.createElement("input", {
-													className: this.state.errorFistName != '' ? 'error' : '',
+													className: this.state.errorFirstName != '' ? 'error' : '',
 													type: "text",
-													ref: "fistname",
-													onKeyUp: this.onKeyUpFistName.bind(this)
+													ref: "firstname",
+													onKeyUp: this.onKeyUpfirstname.bind(this)
 												})
 											)
 										)

@@ -48,14 +48,21 @@ class PopupLogin extends React.Component {
 		var {dispatch} = this.props;
 		var $this = this;
 		dispatch({type: 'ON_LOADING'});
-		window.fbAsyncInit = function() {
-			FB.init({
-		      appId            : '985944054831668',
-		      autoLogAppEvents : true,
-		      xfbml            : true,
-		      version          : 'v2.9'
-		    });
-		  	FB.getLoginStatus(function(response) {
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=985944054831668";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		$.getScript('//connect.facebook.net/vi_VN/sdk.js', function(){
+		    FB.init({
+		      	appId            : '985944054831668',
+		      	autoLogAppEvents : true,
+		      	xfbml            : true,
+		      	version          : 'v2.9'
+		    });    
+		    FB.getLoginStatus(function(response) {
 		    	if (response.status === 'connected') {
 			      	testAPI();
 			    }else{
@@ -64,15 +71,7 @@ class PopupLogin extends React.Component {
 			    	})
 			    }
 		  	});
-		};
-		(function(d, s, id){
-		    var js, fjs = d.getElementsByTagName(s)[0];
-		    if (d.getElementById(id)) {return;}
-		    js = d.createElement(s); js.id = id;
-		    js.src = "//connect.facebook.net/en_US/sdk.js";
-		    fjs.parentNode.insertBefore(js, fjs);
-		   	}(document, 'script', 'facebook-jssdk')
-		);
+		});
 		function testAPI() {
 		    let data = { 
 	    		fields: 'first_name, last_name, email, birthday, cover, picture'
@@ -94,7 +93,7 @@ class PopupLogin extends React.Component {
 								let value;
 								if(res.email){
 									value = {
-						     			'fistname': res.first_name,
+						     			'firstname': res.first_name,
 						     			'lastname' : res.last_name,
 						     			'username' : res.id,
 						     			'email' : res.email,
@@ -110,7 +109,7 @@ class PopupLogin extends React.Component {
 						     		};
 					     		}else{
 					     			value = {
-					     			'fistname': res.first_name,
+					     			'firstname': res.first_name,
 						     			'lastname' : res.last_name,
 						     			'username' : res.id,
 						     			'public' : 'private',

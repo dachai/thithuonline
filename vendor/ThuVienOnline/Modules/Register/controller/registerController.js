@@ -50,7 +50,7 @@ module.exports = class registerController{
 				error.push('Bạn chưa nhập Họ |')
 			}
 
-			if(Validate.isRequired(value.fistname) == false){
+			if(Validate.isRequired(value.firstname) == false){
 				error.push('Bạn chưa nhập Tên |')
 			}
 
@@ -105,7 +105,7 @@ module.exports = class registerController{
 			}
 			if(error.length == 0){
 				let data = {
-					'fistname' : value.fistname,
+					'firstname' : value.firstname,
 					'lastname' : value.lastname,
 					'username' : value.username,
 					'email' : value.email,
@@ -137,7 +137,7 @@ module.exports = class registerController{
 			if(Validate.isRequired(value.lastname) == false){
 				error.push('Bạn chưa nhập Họ |')
 			}
-			if(Validate.isRequired(value.fistname) == false){
+			if(Validate.isRequired(value.firstname) == false){
 				error.push('Bạn chưa nhập Tên |')
 			}
 			if(value.email){

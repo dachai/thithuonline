@@ -5,7 +5,7 @@
 let mongosse = require('mongoose');
 // Users Schema
 let userSchema = mongosse.Schema({
-	fistname:{
+	firstname:{
 		type: String,
 		required: true
 	},

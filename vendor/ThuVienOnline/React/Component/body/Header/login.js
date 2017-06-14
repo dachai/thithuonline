@@ -62,8 +62,8 @@ class Login extends React.Component{
   				<div>
 					<p>
 						{ CheckLogin.more && CheckLogin.more.avatar
-							? <img src={CheckLogin.more.avatar} alt={CheckLogin.fistname} />
-							: <img src='https://us.123rf.com/450wm/imagevectors/imagevectors1602/imagevectors160200185/52757072-white-user-profile-icon-with-long-shadow-on-green-circle.jpg' alt={CheckLogin.fistname}/>
+							? <img src={CheckLogin.more.avatar} alt={CheckLogin.firstname} />
+							: <img src='https://us.123rf.com/450wm/imagevectors/imagevectors1602/imagevectors160200185/52757072-white-user-profile-icon-with-long-shadow-on-green-circle.jpg' alt={CheckLogin.firstname}/>
 
 						}
   						<i className='fa fa-cog' aria-hidden='true'></i>
